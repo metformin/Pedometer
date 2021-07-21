@@ -1,0 +1,42 @@
+PODS:
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
+  - DynamicBlurView (4.1.0)
+  - LGButton (1.1.6)
+  - PopupDialog (1.1.1):
+    - DynamicBlurView (~> 4.0)
+  - SSCustomTabbar (2.0.6)
+  - SwiftIconFont (6.1.1)
+  - TextFieldEffects (1.6.0)
+
+DEPENDENCIES:
+  - Charts
+  - LGButton
+  - PopupDialog
+  - SSCustomTabbar
+  - SwiftIconFont
+  - TextFieldEffects
+
+SPEC REPOS:
+  trunk:
+    - Charts
+    - DynamicBlurView
+    - LGButton
+    - PopupDialog
+    - SSCustomTabbar
+    - SwiftIconFont
+    - TextFieldEffects
+
+SPEC CHECKSUMS:
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
+  DynamicBlurView: 58e18fae80bb614e34681a4486870e7d257b62e8
+  LGButton: 9f0a7f9d3030e3f504108342f6b66d64a429371b
+  PopupDialog: 720c92befd8bc23c13442254945213db5612f149
+  SSCustomTabbar: a52533e429bd40f52ce8d7ecb801f3521fbd56a0
+  SwiftIconFont: 0a772c5ac65a40c9b0675efa37b4928158bd8e43
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
+
+PODFILE CHECKSUM: 522d4bcf5311261018a878b11a43b1105e12367e
+
+COCOAPODS: 1.9.1

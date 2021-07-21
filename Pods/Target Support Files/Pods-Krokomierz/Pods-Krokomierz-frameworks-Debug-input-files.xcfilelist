@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-Krokomierz/Pods-Krokomierz-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework
+${BUILT_PRODUCTS_DIR}/LGButton/LGButton.framework
+${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework
+${BUILT_PRODUCTS_DIR}/SSCustomTabbar/SSCustomTabbar.framework
+${BUILT_PRODUCTS_DIR}/SwiftIconFont/SwiftIconFont.framework
+${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework
