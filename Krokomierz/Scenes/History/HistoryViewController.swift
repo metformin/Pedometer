@@ -8,40 +8,78 @@
 import UIKit
 import Charts
 import HealthKit
+import Combine
 
 
 class historyViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
 
-    
+    let viewModel = HistoryViewModel()
+    var subscriptions = Set<AnyCancellable>()
+
     @IBOutlet var mainView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
         categoryCollectionView.allowsMultipleSelection = false
-        weekHistoryLineChart.noDataText = "Brak danych"
+//        weekHistoryLineChart.noDataText = "Brak danych"
         dayHistoryLineChart.noDataText = "Brak danych"
 
+        viewModel.getDayRange(forSelectedDate: Date())
+        viewModel.getWeekRange(forSelectedDate: Date())
+        viewModel.getYearRange(forSelectedDate: Date())
+
+        //getWeekRange(forSelectedDate: Date())
         
-        getWeekRange(forSelectedDate: Date())
-        getDayRange(forSelectedDate: Date())
-        getMonthRange(forSelectedDate: Date())
+        //getMonthRange(forSelectedDate: Date())
         
         mainView.setGradientBackground(view: mainView)
+        
+        viewModel.dataForOneDay
+            .sink {[weak self] data in
+                print("dataForOneday Completed")
+                self?.setDayHeading(selectedDate: (self?.viewModel.day.startDate)!)
+                self?.dayHistoryLineSetup(stepsTab: data)
+                self?.dayBottomSectionSetup(stepsTab: data)
+            }.store(in: &subscriptions)
+        
+        viewModel.dataForOneWeek
+            .sink {[weak self] data in
+                print("dataForOneWeek Completed")
+                self?.setWeekHeading(selectedDate: (self?.viewModel.week.startDate)!)
+                self?.weekHistoryLineSetup(stepsTab: data)
+                self?.weekBottomSectionSetup(stepsTab: data)
+            }.store(in: &subscriptions)
+        
+        viewModel.dataForOneYear
+            .sink {[weak self] data in
+                print("dataForOneYear Completed")
+                self?.setYearHeading(selectedDate: (self?.viewModel.year.startDate)!)
+                self?.yearHistoryLineSetup(stepsTab: data)
+                self?.yearBottomSectionSetup(stepsTab: data)
+            }.store(in: &subscriptions)
 
     }
     // MARK: Category collection:
     enum categories {
         case steps, distance, calories
     }
-    var selectedCategory: categories = .steps{
-        didSet{
-            getDayRange(forSelectedDate: Date())
-            getMonthRange(forSelectedDate: Date())
-            getWeekRange(forSelectedDate: Date())
-
-        }
-    }
+//    var selCat: Activity.activityType = .steps{
+//        didSet{
+//            getDayRange(forSelectedDate: Date())
+//            getMonthRange(forSelectedDate: Date())
+//            getWeekRange(forSelectedDate: Date())
+//        }
+//    }
+    
+//    var selectedCategory: categories = .steps{
+//        didSet{
+////            getDayRange(forSelectedDate: Date())
+////            getMonthRange(forSelectedDate: Date())
+////            getWeekRange(forSelectedDate: Date())
+//
+//        }
+//    }
     @IBOutlet weak var categoryCollectionView: UICollectionView!
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -81,13 +119,13 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
         
         switch (indexPath.row) {
         case 0:
-            selectedCategory = .steps
+            viewModel.selectedAcvitityType = .steps
             break
         case 1:
-            selectedCategory = .distance
+            viewModel.selectedAcvitityType = .distance
             break
         case 2:
-            selectedCategory = .calories
+            viewModel.selectedAcvitityType = .calories
             break
         default:
             break
@@ -126,33 +164,33 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBAction func dayButtonBack(_ sender: Any) {
         var components = DateComponents()
         components.day = -1
-        let backWeek = Calendar.current.date(byAdding: components, to: day.startDate)!
-        getDayRange(forSelectedDate: backWeek)
+//        let backWeek = Calendar.current.date(byAdding: components, to: day.startDate)!
+//        getDayRange(forSelectedDate: backWeek)
     }
     @IBAction func dayButtonNext(_ sender: Any) {
         var components = DateComponents()
         components.day = 1
-        let backWeek = Calendar.current.date(byAdding: components, to: day.startDate)!
-        getDayRange(forSelectedDate: backWeek)
+//        let backWeek = Calendar.current.date(byAdding: components, to: day.startDate)!
+//        getDayRange(forSelectedDate: backWeek)
     }
     
-    var day = DateRange() {
-        didSet{
-            getDayData(selectedDate: day.startDate, category: selectedCategory) { (stepsTab: [Date:Double]) in
-                    print("Pobrana tablica dla jednego dnia:", stepsTab)
-                self.dayHistoryLineSetup(stepsTab: stepsTab)
-                self.setDayHeading(selectedDate: self.day.startDate)
-                self.dayBottomSectionSetup(stepsTab: stepsTab)
-            }
-        }
-    }
+    
+//    var day = DateRange() {
+//        didSet{
+//            getDayData(selectedDate: day.startDate, category: selectedCategory) { (stepsTab: [Date:Double]) in
+//                    print("Pobrana tablica dla jednego dnia:", stepsTab)
+//                self.dayHistoryLineSetup(stepsTab: stepsTab)
+//                self.setDayHeading(selectedDate: self.day.startDate)
+//                self.dayBottomSectionSetup(stepsTab: stepsTab)
+//            }
+//        }
+//    }
     
     func setDayHeading(selectedDate: Date){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM"
         dateFormatter.locale = Locale(identifier: "pl_PL")
         let startWeek = dateFormatter.string(from: selectedDate)
-
         self.dayLabel.text = (startWeek)
     }
     
@@ -163,9 +201,8 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
         components.day = 1
         let endWeek = Calendar.current.date(byAdding: components, to: startDay)!
         print("GetDayRange ustawiony na date:", startDay)
-        day.startDate = startDay
+        //day.startDate = startDay
         //week.endDate = endWeek
-        
     }
     //Downloads data for whole day:
     func getDayData(selectedDate: Date, category: categories, completion: @escaping ([Date:Double]) -> Void) {
@@ -212,18 +249,16 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
 
     }
     func dayHistoryLineSetup(stepsTab: [Date:Double]){
-
-
-        
         let sortedByDates = stepsTab.sorted{$1.key > $0.key}
+        print("Sorted By dates: \(sortedByDates)")
         var entries = [ChartDataEntry]()
         for (index, hours) in sortedByDates.enumerated(){
             let entry = (ChartDataEntry(x: Double(index), y: hours.value))
             entries.append(entry)
         }
-        
+
         let dataSet = LineChartDataSet(entries: entries, label: "Test")
-        
+
         let data = LineChartData(dataSets: [dataSet])
         dayHistoryLineChart.data = data
         dayHistoryLineChart.dragEnabled = true
@@ -247,43 +282,43 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
         dayHistoryLineChart.scaleYEnabled = false
         dayHistoryLineChart.scaleXEnabled = true
 
-        
+
         dayHistoryLineChart.legend.enabled = false
-        
-        
+
+
         let leftAxis = dayHistoryLineChart.leftAxis
         leftAxis.drawAxisLineEnabled = false
         leftAxis.axisMinimum = 0
         leftAxis.labelTextColor = UIColor.white
 
-        
-        
+
+
         let xAxis = dayHistoryLineChart.xAxis
         xAxis.drawAxisLineEnabled = false
         xAxis.drawGridLinesEnabled = false
         xAxis.labelTextColor = UIColor.white
 
-        
+
         let hours = ["00:00","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"]
         xAxis.valueFormatter = IndexAxisValueFormatter(values:hours)
         xAxis.granularity = 1
         xAxis.forceLabelsEnabled = true
         xAxis.labelCount = 24
         xAxis.labelPosition = .bottom
-        
-        
 
 
-        
+
+
+
         dayHistoryLineChart.rightAxis.enabled = false
 
         //This must stay at end of function
-        dayHistoryLineChart.notifyDataSetChanged()
+        //dayHistoryLineChart.notifyDataSetChanged()
     }
-    
+
     // Day setup bottom section:
     @IBOutlet weak var dayBottomSection: customViewDetails!
-    
+
     func dayBottomSectionSetup(stepsTab: [Date:Double]){
         var sumSteps = 0.0
         var aveSteps = 0.0
@@ -297,37 +332,25 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
         aveSteps = sumSteps/Double(stepsTab.count)
         dayBottomSection.averageLabel.text = String(format: "%.0f",aveSteps)
         dayBottomSection.sumLabel.text = String (format: "%.0f",sumSteps)
-        
-        
     }
-    
-    
+
+
     // MARK: Week Setup
     @IBOutlet weak var weekHistoryLineChart: LineChartView!
     @IBOutlet weak var weekLabel: UILabel!
     @IBAction func weekButtonBack(_ sender: Any) {
         var components = DateComponents()
         components.day = -1
-        let backWeek = Calendar.current.date(byAdding: components, to: week.startDate)!
-        getWeekRange(forSelectedDate: backWeek)
+//        let backWeek = Calendar.current.date(byAdding: components, to: week.startDate)!
+//        getWeekRange(forSelectedDate: backWeek)
     }
     @IBAction func weekButtonNext(_ sender: Any) {
         var components = DateComponents()
         components.day = 7
-        let backWeek = Calendar.current.date(byAdding: components, to: week.startDate)!
-        getWeekRange(forSelectedDate: backWeek)
+//        let backWeek = Calendar.current.date(byAdding: components, to: week.startDate)!
+//        getWeekRange(forSelectedDate: backWeek)
     }
-    var week = DateRange() {
-        didSet{
-            getWeekData(selectedDate: week.startDate, category: selectedCategory) { (stepsTab: [Date:Double]) in
-                    print("Pobrana tablica:", stepsTab)
-                self.weekHistoryLineSetup(stepsTab: stepsTab)
-                self.setWeekHeading(selectedDate: self.week.startDate)
-                self.monthsBottomSectionSetup(stepsTab: stepsTab)
 
-            }
-        }
-    }
 
     func setWeekHeading(selectedDate: Date){
         let dateFormatter = DateFormatter()
@@ -339,27 +362,27 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
         let endWeek = dateFormatter.string(from:Calendar.current.date(byAdding: components, to: selectedDate.startOfWeek())!)
         self.weekLabel.text = (startWeek + " - " + endWeek)
     }
-    func getWeekRange(forSelectedDate: Date) {
-        let startWeek = forSelectedDate.startOfWeek()
-        var components = DateComponents()
-        components.day = 6
-        let endWeek = Calendar.current.date(byAdding: components, to: startWeek)!
-        week.startDate = startWeek
-        //week.endDate = endWeek
-        
-    }
-    
+//    func getWeekRange(forSelectedDate: Date) {
+//        let startWeek = forSelectedDate.startOfWeek()
+//        var components = DateComponents()
+//        components.day = 6
+//        let endWeek = Calendar.current.date(byAdding: components, to: startWeek)!
+//        week.startDate = startWeek
+//        //week.endDate = endWeek
+//
+//    }
+
     func weekHistoryLineSetup(stepsTab: [Date:Double]){
 
 
-        
+
         let sortedByDates = stepsTab.sorted{$1.key > $0.key}
         var entries = [ChartDataEntry]()
         for (index, days) in sortedByDates.enumerated(){
             let entry = (ChartDataEntry(x: Double(index), y: days.value))
             entries.append(entry)
         }
-        
+
         let dataSet = LineChartDataSet(entries: entries, label: "Test")
         dataSet.valueTextColor = UIColor.white
 
@@ -379,19 +402,19 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
         dataSet.fillAlpha = 1
         dataSet.drawCirclesEnabled = false
         dataSet.drawFilledEnabled = true
-        
+
         weekHistoryLineChart.pinchZoomEnabled = false
 
-        
+
         weekHistoryLineChart.legend.enabled = false
-        
-        
+
+
         let leftAxis = weekHistoryLineChart.leftAxis
         leftAxis.drawAxisLineEnabled = false
         leftAxis.axisMinimum = 0
         leftAxis.labelTextColor = UIColor.white
 
-        
+
         let xAxis = weekHistoryLineChart.xAxis
         xAxis.drawAxisLineEnabled = false
         xAxis.drawGridLinesEnabled = false
@@ -405,7 +428,7 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
 
 
 
-        
+
         weekHistoryLineChart.rightAxis.enabled = false
 
         //This must stay at end of function
@@ -458,7 +481,7 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
     // Months setup bottom section:
     @IBOutlet weak var monthBottomSection: customViewDetails!
     
-    func monthsBottomSectionSetup(stepsTab: [Date:Double]){
+    func weekBottomSectionSetup(stepsTab: [Date:Double]){
         var sumSteps = 0.0
         var aveSteps = 0.0
         for step in stepsTab.values {
@@ -488,13 +511,13 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     var year = DateRange() {
         didSet{
-            getMonthData(selectedDate: year.startDate, category: selectedCategory) { (stepsTab: [Date:Double]) in
-                    print("Pobrana tablica:", stepsTab)
-                self.yearHistoryLineSetup(stepsTab: stepsTab)
-                self.setYearHeading(selectedDate: self.year.startDate)
-                self.yearsBottomSectionSetup(stepsTab: stepsTab)
-
-            }
+//            getMonthData(selectedDate: year.startDate, category: selectedCategory) { (stepsTab: [Date:Double]) in
+//                    print("Pobrana tablica:", stepsTab)
+//                self.yearHistoryLineSetup(stepsTab: stepsTab)
+//                self.setYearHeading(selectedDate: self.year.startDate)
+//                self.yearsBottomSectionSetup(stepsTab: stepsTab)
+//
+//            }
         }
     }
     
@@ -631,7 +654,7 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet weak var yearsBottomSection: customViewDetails!
     
-    func yearsBottomSectionSetup(stepsTab: [Date:Double]){
+    func yearBottomSectionSetup(stepsTab: [Date:Double]){
         var sumSteps = 0.0
         var aveSteps = 0.0
         for step in stepsTab.values {
@@ -721,6 +744,8 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
                 return
             }
             completion(sum.doubleValue(for: HKUnit.count()))
+            print("RES SUC:\(result)")
+
 
         }
         healthStore.execute(query)
@@ -755,6 +780,7 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
                                       quantitySamplePredicate: predictate,
                                       options: .cumulativeSum) { _, result,_ in
             guard let result = result, let sum = result.sumQuantity() else {
+
                 completion(0.0)
                 return
             }

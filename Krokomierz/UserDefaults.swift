@@ -7,10 +7,6 @@
 
 import Foundation
 
-
-
-
-
 public func changeGoalStepsAmount(newGoalSteps:Double){
     let userDefaults = UserDefaults.standard
     userDefaults.set(newGoalSteps, forKey: "goalSteps")

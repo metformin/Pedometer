@@ -21,23 +21,12 @@ class customViewDetails: UIView {
         //setLine()
     }
     
-    override var frame: CGRect {
-            didSet {
-                //setLine()
-            }
-    }
-    
     override var bounds: CGRect {
-            didSet {
-                setLine()
-            }
+        didSet {
+            setLine()
+        }
     }
     
-    override func layoutSubviews(){
-        //setLine()
-
-    }
-
     func setLine(){
         let lineLayer = CAShapeLayer()
         lineLayer.strokeColor = UIColor.gray.cgColor

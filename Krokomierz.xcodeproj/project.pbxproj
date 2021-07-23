@@ -18,11 +18,14 @@
 		F915D8C725B4C32D00DF14AF /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F915D8C625B4C32D00DF14AF /* HistoryViewController.swift */; };
 		F93D123A25B21691007638AA /* CustomPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93D123925B21691007638AA /* CustomPopUp.xib */; };
 		F93D123C25B216D9007638AA /* customPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D123B25B216D9007638AA /* customPopUpViewController.swift */; };
-		F9431BEF26A85A91009EDF79 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9431BEE26A85A91009EDF79 /* HomeModel.swift */; };
+		F9431BEF26A85A91009EDF79 /* healthActivityDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9431BEE26A85A91009EDF79 /* healthActivityDataModel.swift */; };
 		F9431BF126A85A9F009EDF79 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9431BF026A85A9F009EDF79 /* HomeViewModel.swift */; };
+		F9431BF426A86506009EDF79 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9431BF326A86506009EDF79 /* HealthKit.swift */; };
 		F9438C6925AE38230056BDC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9438C6825AE38230056BDC2 /* SettingsViewController.swift */; };
 		F9438C6C25AE3A930056BDC2 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9438C6B25AE3A930056BDC2 /* UserDefaults.swift */; };
 		F9443C6B25B5F2A000C52409 /* dateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9443C6A25B5F2A000C52409 /* dateValueFormatter.swift */; };
+		F95A2EF926AA1923004D26C6 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95A2EF826AA1923004D26C6 /* HistoryViewModel.swift */; };
+		F95A2EFB26AA1A17004D26C6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95A2EFA26AA1A17004D26C6 /* Model.swift */; };
 		F97DFEC225AF75150093060F /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F97DFEC425AF75180093060F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D9714E259917F300A776BE /* HealthKit.framework */; };
 		F988390425CC62230004B8C7 /* customViewDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = F988390325CC62230004B8C7 /* customViewDetails.xib */; };
@@ -61,11 +64,14 @@
 		F915D8C625B4C32D00DF14AF /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		F93D123925B21691007638AA /* CustomPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPopUp.xib; sourceTree = "<group>"; };
 		F93D123B25B216D9007638AA /* customPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customPopUpViewController.swift; sourceTree = "<group>"; };
-		F9431BEE26A85A91009EDF79 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
+		F9431BEE26A85A91009EDF79 /* healthActivityDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healthActivityDataModel.swift; sourceTree = "<group>"; };
 		F9431BF026A85A9F009EDF79 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F9431BF326A86506009EDF79 /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		F9438C6825AE38230056BDC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F9438C6B25AE3A930056BDC2 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		F9443C6A25B5F2A000C52409 /* dateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateValueFormatter.swift; sourceTree = "<group>"; };
+		F95A2EF826AA1923004D26C6 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		F95A2EFA26AA1A17004D26C6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F988390325CC62230004B8C7 /* customViewDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = customViewDetails.xib; sourceTree = "<group>"; };
 		F988390725CC62CC0004B8C7 /* customViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customViewDetails.swift; sourceTree = "<group>"; };
 		F9A78F4925BA00DB006EDACD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -121,7 +127,6 @@
 				F9D9714C259917F300A776BE /* Krokomierz.entitlements */,
 				F9066993259914FA004F7E37 /* AppDelegate.swift */,
 				F9066995259914FA004F7E37 /* SceneDelegate.swift */,
-				F9066999259914FA004F7E37 /* Main.storyboard */,
 				F906699F25991503004F7E37 /* Assets.xcassets */,
 				F90669A125991503004F7E37 /* LaunchScreen.storyboard */,
 				F93D123925B21691007638AA /* CustomPopUp.xib */,
@@ -134,6 +139,7 @@
 				F988390325CC62230004B8C7 /* customViewDetails.xib */,
 				F988390725CC62CC0004B8C7 /* customViewDetails.swift */,
 				F9A78F4925BA00DB006EDACD /* Extensions.swift */,
+				F9431BF326A86506009EDF79 /* HealthKit.swift */,
 			);
 			path = Krokomierz;
 			sourceTree = "<group>";
@@ -141,9 +147,11 @@
 		F9431BEC26A85A14009EDF79 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F95A2EF726AA0620004D26C6 /* Models */,
 				F9431BED26A85A20009EDF79 /* Home */,
 				F9431BF226A85AF6009EDF79 /* History */,
 				F9B70616259A5F3F00D4DEBA /* stepsCounterBar.swift */,
+				F9066999259914FA004F7E37 /* Main.storyboard */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -152,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				F9066997259914FA004F7E37 /* HomeViewController.swift */,
-				F9431BEE26A85A91009EDF79 /* HomeModel.swift */,
 				F9431BF026A85A9F009EDF79 /* HomeViewModel.swift */,
 			);
 			path = Home;
@@ -162,8 +169,18 @@
 			isa = PBXGroup;
 			children = (
 				F915D8C625B4C32D00DF14AF /* HistoryViewController.swift */,
+				F95A2EF826AA1923004D26C6 /* HistoryViewModel.swift */,
+				F95A2EFA26AA1A17004D26C6 /* Model.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		F95A2EF726AA0620004D26C6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F9431BEE26A85A91009EDF79 /* healthActivityDataModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F9D9714D259917F300A776BE /* Frameworks */ = {
@@ -298,14 +315,17 @@
 				F9066998259914FA004F7E37 /* HomeViewController.swift in Sources */,
 				F9B70617259A5F4000D4DEBA /* stepsCounterBar.swift in Sources */,
 				F9443C6B25B5F2A000C52409 /* dateValueFormatter.swift in Sources */,
-				F9431BEF26A85A91009EDF79 /* HomeModel.swift in Sources */,
+				F9431BEF26A85A91009EDF79 /* healthActivityDataModel.swift in Sources */,
+				F9431BF426A86506009EDF79 /* HealthKit.swift in Sources */,
 				F9066994259914FA004F7E37 /* AppDelegate.swift in Sources */,
 				F9066996259914FA004F7E37 /* SceneDelegate.swift in Sources */,
+				F95A2EFB26AA1A17004D26C6 /* Model.swift in Sources */,
 				F9431BF126A85A9F009EDF79 /* HomeViewModel.swift in Sources */,
 				F915D8C725B4C32D00DF14AF /* HistoryViewController.swift in Sources */,
 				F9438C6C25AE3A930056BDC2 /* UserDefaults.swift in Sources */,
 				F9A78F4A25BA00DB006EDACD /* Extensions.swift in Sources */,
 				F9438C6925AE38230056BDC2 /* SettingsViewController.swift in Sources */,
+				F95A2EF926AA1923004D26C6 /* HistoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

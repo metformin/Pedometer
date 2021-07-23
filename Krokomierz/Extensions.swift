@@ -11,6 +11,28 @@ import UIKit
 extension Calendar {
     static let gregorian = Calendar(identifier: .iso8601)
 }
+extension DateComponents{
+    enum Periods{
+        case oneHour, oneDay, oneMonth
+    }
+
+    func forPeriod(period: Periods) -> DateComponents {
+        var components = DateComponents()
+        switch period {
+        case .oneHour:
+            components.hour = 1
+            break
+        case .oneDay:
+            components.day = 1
+            components.second = 1
+            break
+        case .oneMonth:
+            components.month = 1
+            break
+        }
+        return components
+    }
+}
 extension Date {
     func startOfWeek(using calendar: Calendar = .gregorian) -> Date {
         calendar.dateComponents([.calendar, .yearForWeekOfYear, .weekOfYear], from: self).date!
