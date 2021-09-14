@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="customPopUpViewController" customModule="Krokomierz" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="notificationDialogViewController" customModule="Krokomierz" customModuleProvider="target">
             <connections>
-                <outlet property="pickerView" destination="N9f-4n-HWY" id="21p-6A-Oh8"/>
+                <outlet property="notificationSegment" destination="2a8-RJ-s0g" id="99H-GD-dPF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,8 +22,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IS1-mO-qkH">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LICZBA KROKÓW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLW-Lu-VBj">
-                            <rect key="frame" x="75" y="25" width="138" height="132"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="POWIADOMIENIA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLW-Lu-VBj">
+                            <rect key="frame" x="75" y="25" width="138" height="127"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="138" id="AeL-Uh-bdN"/>
                             </constraints>
@@ -30,31 +31,36 @@
                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ile kroków chcesz pokonać każdego dnia?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQn-L7-aw4">
-                            <rect key="frame" x="33" y="165" width="223" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Możemy codzienie, o ustalonej przez ciebie porze, wysyłać Ci powiadomienie podsumowujące Twój dzien i osiągnięte cele." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QQn-L7-aw4">
+                            <rect key="frame" x="33" y="160" width="223" height="40"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="21" id="1Da-sS-Bkc"/>
+                                <constraint firstAttribute="height" constant="40" id="1Da-sS-Bkc"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9f-4n-HWY">
-                            <rect key="frame" x="51" y="186" width="198" height="114"/>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2a8-RJ-s0g">
+                            <rect key="frame" x="10" y="220" width="272" height="31"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="114" id="AgS-xq-7EP"/>
+                                <constraint firstAttribute="height" constant="30" id="jjy-z3-4Q1"/>
                             </constraints>
-                        </pickerView>
+                            <segments>
+                                <segment title="Wyłączone"/>
+                                <segment title="Włączone"/>
+                            </segments>
+                            <color key="selectedSegmentTintColor" systemColor="systemIndigoColor"/>
+                        </segmentedControl>
                     </subviews>
                     <constraints>
                         <constraint firstItem="QQn-L7-aw4" firstAttribute="leading" secondItem="IS1-mO-qkH" secondAttribute="leading" constant="33" id="1Ax-Mn-I1S"/>
-                        <constraint firstItem="N9f-4n-HWY" firstAttribute="top" secondItem="QQn-L7-aw4" secondAttribute="bottom" id="LcX-69-cKr"/>
-                        <constraint firstItem="N9f-4n-HWY" firstAttribute="width" secondItem="IS1-mO-qkH" secondAttribute="width" multiplier="0.66" id="MDO-SP-Jck"/>
+                        <constraint firstItem="2a8-RJ-s0g" firstAttribute="leading" secondItem="IS1-mO-qkH" secondAttribute="leading" constant="10" id="JN2-UD-h2w"/>
+                        <constraint firstAttribute="bottom" secondItem="2a8-RJ-s0g" secondAttribute="bottom" constant="50" id="OcA-Rf-Npz"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="2a8-RJ-s0g" secondAttribute="trailing" constant="10" id="Vch-qR-omj"/>
+                        <constraint firstItem="2a8-RJ-s0g" firstAttribute="top" secondItem="QQn-L7-aw4" secondAttribute="bottom" constant="20" id="WAT-Xd-kyG"/>
                         <constraint firstAttribute="trailing" secondItem="QQn-L7-aw4" secondAttribute="trailing" constant="44" id="Z2x-jm-vQB"/>
                         <constraint firstItem="QQn-L7-aw4" firstAttribute="top" secondItem="XLW-Lu-VBj" secondAttribute="bottom" constant="8" id="j2I-LU-dmi"/>
-                        <constraint firstAttribute="bottom" secondItem="N9f-4n-HWY" secondAttribute="bottom" id="ljK-7v-1VY"/>
                         <constraint firstItem="XLW-Lu-VBj" firstAttribute="top" secondItem="IS1-mO-qkH" secondAttribute="top" constant="25" id="mf9-b7-p4a"/>
-                        <constraint firstItem="N9f-4n-HWY" firstAttribute="centerX" secondItem="IS1-mO-qkH" secondAttribute="centerX" id="oTB-ko-Dee"/>
                         <constraint firstItem="XLW-Lu-VBj" firstAttribute="centerX" secondItem="IS1-mO-qkH" secondAttribute="centerX" constant="-6" id="pR8-bb-Q05"/>
                     </constraints>
                 </view>
@@ -70,4 +76,9 @@
             <point key="canvasLocation" x="262.31884057971018" y="271.875"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

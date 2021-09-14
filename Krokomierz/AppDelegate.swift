@@ -7,17 +7,19 @@
 
 import UIKit
 import CoreData
+import Combine
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
+   // var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UNUserNotificationCenter.current().delegate = self
         // Override point for customization after application launch.
         return true
     }
+    // MARK: Notifications settings
 
     // MARK: UISceneSession Lifecycle
 
@@ -82,3 +84,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate{
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let scene = UIApplication.shared.connectedScenes.first
+        if let sceneDelegate = scene?.delegate as? SceneDelegate {
+            if let tabController = sceneDelegate.window?.rootViewController as? UITabBarController {
+                  tabController.selectedIndex = 0
+            }
+        }
+
+        NotificationCenter.default.post(name: Notification.Name("NotificationIdentifier"), object: nil)
+
+        // tell the app that we have finished processing the user’s action / response
+        completionHandler()
+    }
+}

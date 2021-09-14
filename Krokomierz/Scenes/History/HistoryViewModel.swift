@@ -22,6 +22,8 @@ class HistoryViewModel {
     let healthKit = HealthKitSetup()
     var subscriptions = Set<AnyCancellable>()
     var selectedAcvitityType: activityType = .steps
+    var components = DateComponents()
+
 
     var dataForOneDay = PassthroughSubject<[Date:Double],Never>()
     var dataForOneWeek = PassthroughSubject<[Date:Double],Never>()
@@ -31,7 +33,6 @@ class HistoryViewModel {
         didSet{
             getDataForSpecificPeriodTime(selectedDate: day.startDate, activity: selectedAcvitityType, period: .oneHour)
                 .sink { [weak self] steps in
-                    print("Downlaoded steps: \(steps)")
                     self?.dataForOneDay.send(steps)
                 }.store(in: &subscriptions)
         }
@@ -40,7 +41,6 @@ class HistoryViewModel {
         didSet{
             getDataForSpecificPeriodTime(selectedDate: week.startDate, activity: selectedAcvitityType, period: .oneDay)
                 .sink { [weak self] steps in
-                    print("Downlaoded steps: \(steps)")
                     self?.dataForOneWeek.send(steps)
                 }.store(in: &subscriptions)
         }
@@ -49,10 +49,44 @@ class HistoryViewModel {
         didSet{
             getDataForSpecificPeriodTime(selectedDate: year.startDate, activity: selectedAcvitityType, period: .oneMonth)
                 .sink { [weak self] steps in
-                    print("Downlaoded steps: \(steps)")
                     self?.dataForOneYear.send(steps)
                 }.store(in: &subscriptions)
         }
+    }
+    
+    //MARK: - Button Actions
+    func dayButtonBackDidTapped(){
+        components.day = -1
+        let backDay = Calendar.current.date(byAdding: components, to: day.startDate)!
+        getDayRange(forSelectedDate: backDay)
+    }
+    func dayButtonNextDidTapped(){
+        components.day = 1
+        let nextDay = Calendar.current.date(byAdding: components, to: day.startDate)!
+        getDayRange(forSelectedDate: nextDay)
+    }
+    func weekButtonBackDidTapped(){
+        components.day = -1
+        let backWeek = Calendar.current.date(byAdding: components, to: week.startDate)!
+        getWeekRange(forSelectedDate: backWeek)
+    }
+    func weekButtonNextDidTapped(){
+        components.day = 7
+        let nextWeek = Calendar.current.date(byAdding: components, to: week.startDate)!
+        getWeekRange(forSelectedDate: nextWeek)
+    }
+    func yearButtonBackDidTapped(){
+        components.year = -1
+        print("Back year button tapped")
+        let backYear = Calendar.current.date(byAdding: components, to: year.startDate)!
+        getYearRange(forSelectedDate: backYear)
+    }
+    func yearButtonNextDidTapped(){
+        print("Next year button tapped")
+
+        components.year = 1
+        let nextYear = Calendar.current.date(byAdding: components, to: year.startDate)!
+        getYearRange(forSelectedDate: nextYear)
     }
     
 
@@ -61,38 +95,25 @@ class HistoryViewModel {
     func getDayRange(forSelectedDate: Date) {
         let calendar = Calendar.current
         let startDay = calendar.startOfDay(for: forSelectedDate)
-        var components = DateComponents().forPeriod(period: .oneDay)
-        let endWeek = Calendar.current.date(byAdding: components, to: startDay)!
-        print("GetDayRange ustawiony na date:", startDay)
         day.startDate = startDay
-        //week.endDate = endWeek
     }
     func getWeekRange(forSelectedDate: Date) {
         let startWeek = forSelectedDate.startOfWeek()
-        var components = DateComponents()
-        components.day = 6
         let endWeek = Calendar.current.date(byAdding: components, to: startWeek)!
         week.startDate = startWeek
-        //week.endDate = endWeek
-
     }
     func getYearRange(forSelectedDate: Date) {
         let startMonth = forSelectedDate.startOfYear
-        var components = DateComponents()
-        components.year = 1
-        print("GetYearRange ustawiony na date:", startMonth)
         year.startDate = startMonth
-        //week.endDate = endWeek
-        
     }
-    
+
     //MARK: - Get Data For Specific Period Time
     func getDataForSpecificPeriodTime(selectedDate: Date, activity: activityType, period: DateComponents.Periods) -> Future<[Date:Double],Never>{
         Future { promise in
             var components = DateComponents()
             var data = [Date:Double]()
             var max: Int
-            //let startDate = Calendar.current.startOfDay(for: Date())
+
             switch period {
             case .oneHour:
                 max = 23
@@ -120,21 +141,23 @@ class HistoryViewModel {
                     case .steps:
                         self.healthKit.getSteps(selectedDay: checkDay, pir: period)
                             .sink { steps in
-                                print("AKTUALNA TABLICA:", steps, "dla daty: ", checkDay)
                                 data[checkDay] = steps
                                 myGroup.leave()
                             }.store(in: &self.subscriptions)
                         break
                     case .distance:
-                        self.healthKit.getSteps(selectedDay: checkDay, pir: period)
-                            .sink { steps in
-                                print("AKTUALNA TABLICA:", steps, "dla daty: ", checkDay)
-                                data[checkDay] = steps
+                        self.healthKit.getDistance(selectedDay: checkDay, pir: period)
+                            .sink { distance in
+                                data[checkDay] = distance
                                 myGroup.leave()
                             }.store(in: &self.subscriptions)
                         break
-                    default:
-                        break
+                    case .calories:
+                        self.healthKit.getSteps(selectedDay: checkDay, pir: period)
+                            .sink { steps in
+                                data[checkDay] = (steps*0.04)
+                                myGroup.leave()
+                            }.store(in: &self.subscriptions)
                     }
                 }
             myGroup.notify(queue:.main){

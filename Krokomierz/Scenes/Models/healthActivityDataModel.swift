@@ -11,7 +11,10 @@ struct healthActivityData{
     var distanceCounter: Double
     var energyBurnedCounter: Double
     var aciveTimeCounter: Double
+    var floorsAscended: Int
+    var floorsDescended: Int
     var stepsCounter: Int
+    var tempo: Double
 }
 
 

@@ -6,11 +6,9 @@
 //
 
 import UIKit
-import HealthKit
-import CoreMotion
 import Combine
+import PopupDialog
 
-public var goalSteps:Double = getGoalStepsAmount()
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -32,18 +30,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Do any additional setup after loading the view.
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showSummary), name: Notification.Name("NotificationIdentifier"), object: nil)
+        
+        
         startUpdateStepsLive()
         mainView.setGradientBackground(view: mainView)
         viewModel.setupStartUpdateStepsLive()
-        
-        
-        
-        //Testy:
+
         historyViewModel.getDayRange(forSelectedDate: Date())
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        //Check the goal steps:
+        viewModel.fetchGoalStepsAmount()
+        viewModel.goalSteps
+            .removeDuplicates()
+            .sink { _ in
+                self.setupProgressBar()
+            }.store(in: &subscriptions)
     }
     //MARK: - Collection View Setup
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -55,19 +65,24 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             cell.counterUnitsLabel.text = "km"
             break
         case 1:
-            cell.imageActivity.image = UIImage(named: "distanceIco")
+            cell.imageActivity.image = UIImage(named: "kcalIco")
             cell.counterLabel.text = String(viewModel.healthData.value.energyBurnedCounter)
             cell.counterUnitsLabel.text = "kcal"
             break
         case 2:
-            cell.imageActivity.image = UIImage(named: "distanceIco")
-            cell.counterLabel.text = String(viewModel.healthData.value.energyBurnedCounter)
-            cell.counterUnitsLabel.text = "piętro"
+            cell.imageActivity.image = UIImage(named: "tempoIco")
+            cell.counterLabel.text = String(viewModel.healthData.value.tempo)
+            cell.counterUnitsLabel.text = "tępo"
             break
         case 3:
-            cell.imageActivity.image = UIImage(named: "distanceIco")
-            cell.counterLabel.text = String(viewModel.healthData.value.energyBurnedCounter)
-            cell.counterUnitsLabel.text = "minut"
+            cell.imageActivity.image = UIImage(named: "floorsAscendedIco")
+            cell.counterLabel.text = String(viewModel.healthData.value.floorsAscended)
+            cell.counterUnitsLabel.text = "piętro"
+            break
+        case 4:
+            cell.imageActivity.image = UIImage(named: "floorsDescendedIco")
+            cell.counterLabel.text = String(viewModel.healthData.value.floorsDescended)
+            cell.counterUnitsLabel.text = "piętro"
             break
         default:
             break
@@ -85,11 +100,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     //MARK: - Progress Bar Setup
     func setupProgressBar(){
         let stepsToDouble =  Double(viewModel.healthData.value.stepsCounter)
-        let percent:Double = stepsToDouble / goalSteps
+        let percent:Double = stepsToDouble / viewModel.goalSteps.value
         let percentToInt:Int =  Int(percent * 100)
         goalStepsPercentsLabel.text = String(percentToInt) + "%"
-        self.stepperBar.progress = CGFloat(stepsToDouble/goalSteps)
-        goalStepsCounterLabel.text = String(viewModel.healthData.value.stepsCounter) + " z " + String(Int(goalSteps)) + " kroków"
+        self.stepperBar.progress = CGFloat(stepsToDouble/viewModel.goalSteps.value)
+        goalStepsCounterLabel.text = String(viewModel.healthData.value.stepsCounter) + " z " + String(Int(viewModel.goalSteps.value)) + " kroków"
     }
     
     // MARK: CoreMotion:
@@ -104,7 +119,29 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             .store(in: &subscriptions)
     }
     
-    
+    @objc func showSummary(){
+        // Create a custom view controller
+        let ratingVC = summaryViewController(nibName: "summaryView", bundle: nil)
+
+        // Create the dialog
+        let popup = PopupDialog(viewController: ratingVC,
+                                buttonAlignment: .horizontal,
+                                transitionStyle: .bounceDown,
+                                tapGestureDismissal: true,
+                                panGestureDismissal: false)
+        
+        // Create first button
+        let buttonOne = DefaultButton(title: "OK", height: 60) {
+        }
+
+
+        // Add buttons to dialog
+        popup.addButtons([buttonOne])
+
+        // Present dialog
+        present(popup,animated: true, completion: nil)
+
+    }
 }
 
 class activityCollectionViewCell: UICollectionViewCell {

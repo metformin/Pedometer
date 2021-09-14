@@ -61,8 +61,5 @@ class CircularProgressView: UIView {
         progressLayer.strokeEnd = progress
         progressLayer.strokeColor = color?.cgColor
     }
-    
-    
-    
 }
 

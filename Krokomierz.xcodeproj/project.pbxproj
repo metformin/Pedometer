@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9594786B6714FD4A27DD8F1A /* Pods_Krokomierz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF482FAB2A84FE4CA287D8B /* Pods_Krokomierz.framework */; };
 		F9066994259914FA004F7E37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9066993259914FA004F7E37 /* AppDelegate.swift */; };
 		F9066996259914FA004F7E37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9066995259914FA004F7E37 /* SceneDelegate.swift */; };
 		F9066998259914FA004F7E37 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9066997259914FA004F7E37 /* HomeViewController.swift */; };
@@ -16,8 +15,12 @@
 		F90669A025991503004F7E37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F906699F25991503004F7E37 /* Assets.xcassets */; };
 		F90669A325991503004F7E37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F90669A125991503004F7E37 /* LaunchScreen.storyboard */; };
 		F915D8C725B4C32D00DF14AF /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F915D8C625B4C32D00DF14AF /* HistoryViewController.swift */; };
-		F93D123A25B21691007638AA /* CustomPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93D123925B21691007638AA /* CustomPopUp.xib */; };
-		F93D123C25B216D9007638AA /* customPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D123B25B216D9007638AA /* customPopUpViewController.swift */; };
+		F93550B226C4344A005D0437 /* summaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93550B126C4344A005D0437 /* summaryView.xib */; };
+		F93550B426C435EA005D0437 /* summaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93550B326C435EA005D0437 /* summaryViewController.swift */; };
+		F93CE82626BB32FA00AA570D /* weightDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93CE82526BB32FA00AA570D /* weightDialogView.xib */; };
+		F93CE82826BB336D00AA570D /* weightDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93CE82726BB336D00AA570D /* weightDialogViewController.swift */; };
+		F93D123A25B21691007638AA /* stepsAmountDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93D123925B21691007638AA /* stepsAmountDialogView.xib */; };
+		F93D123C25B216D9007638AA /* stepsAmountDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93D123B25B216D9007638AA /* stepsAmountDialogViewController.swift */; };
 		F9431BEF26A85A91009EDF79 /* healthActivityDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9431BEE26A85A91009EDF79 /* healthActivityDataModel.swift */; };
 		F9431BF126A85A9F009EDF79 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9431BF026A85A9F009EDF79 /* HomeViewModel.swift */; };
 		F9431BF426A86506009EDF79 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9431BF326A86506009EDF79 /* HealthKit.swift */; };
@@ -25,12 +28,16 @@
 		F9438C6C25AE3A930056BDC2 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9438C6B25AE3A930056BDC2 /* UserDefaults.swift */; };
 		F9443C6B25B5F2A000C52409 /* dateValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9443C6A25B5F2A000C52409 /* dateValueFormatter.swift */; };
 		F95A2EF926AA1923004D26C6 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95A2EF826AA1923004D26C6 /* HistoryViewModel.swift */; };
-		F95A2EFB26AA1A17004D26C6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95A2EFA26AA1A17004D26C6 /* Model.swift */; };
+		F95A2EFC26AB2FD1004D26C6 /* Pods_Krokomierz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF482FAB2A84FE4CA287D8B /* Pods_Krokomierz.framework */; };
 		F97DFEC225AF75150093060F /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F97DFEC425AF75180093060F /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9D9714E259917F300A776BE /* HealthKit.framework */; };
 		F988390425CC62230004B8C7 /* customViewDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = F988390325CC62230004B8C7 /* customViewDetails.xib */; };
 		F988390825CC62CC0004B8C7 /* customViewDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = F988390725CC62CC0004B8C7 /* customViewDetails.swift */; };
+		F98DF36826B7439500F9C089 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98DF36726B7439500F9C089 /* SettingsViewModel.swift */; };
 		F9A78F4A25BA00DB006EDACD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A78F4925BA00DB006EDACD /* Extensions.swift */; };
+		F9AAC47B26C05BA900A2F3B0 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AAC47A26C05BA900A2F3B0 /* NotificationManager.swift */; };
+		F9AAC47D26C06AAA00A2F3B0 /* notificationDialogView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9AAC47C26C06AAA00A2F3B0 /* notificationDialogView.xib */; };
+		F9AAC47F26C06AC600A2F3B0 /* notificationDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AAC47E26C06AC600A2F3B0 /* notificationDialogViewController.swift */; };
 		F9B70617259A5F4000D4DEBA /* stepsCounterBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B70616259A5F3F00D4DEBA /* stepsCounterBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,8 +69,12 @@
 		F90669A225991503004F7E37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F90669A425991503004F7E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F915D8C625B4C32D00DF14AF /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		F93D123925B21691007638AA /* CustomPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPopUp.xib; sourceTree = "<group>"; };
-		F93D123B25B216D9007638AA /* customPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customPopUpViewController.swift; sourceTree = "<group>"; };
+		F93550B126C4344A005D0437 /* summaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = summaryView.xib; sourceTree = "<group>"; };
+		F93550B326C435EA005D0437 /* summaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = summaryViewController.swift; sourceTree = "<group>"; };
+		F93CE82526BB32FA00AA570D /* weightDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = weightDialogView.xib; sourceTree = "<group>"; };
+		F93CE82726BB336D00AA570D /* weightDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = weightDialogViewController.swift; sourceTree = "<group>"; };
+		F93D123925B21691007638AA /* stepsAmountDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = stepsAmountDialogView.xib; sourceTree = "<group>"; };
+		F93D123B25B216D9007638AA /* stepsAmountDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepsAmountDialogViewController.swift; sourceTree = "<group>"; };
 		F9431BEE26A85A91009EDF79 /* healthActivityDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = healthActivityDataModel.swift; sourceTree = "<group>"; };
 		F9431BF026A85A9F009EDF79 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F9431BF326A86506009EDF79 /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
@@ -71,10 +82,13 @@
 		F9438C6B25AE3A930056BDC2 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		F9443C6A25B5F2A000C52409 /* dateValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dateValueFormatter.swift; sourceTree = "<group>"; };
 		F95A2EF826AA1923004D26C6 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
-		F95A2EFA26AA1A17004D26C6 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F988390325CC62230004B8C7 /* customViewDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = customViewDetails.xib; sourceTree = "<group>"; };
 		F988390725CC62CC0004B8C7 /* customViewDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customViewDetails.swift; sourceTree = "<group>"; };
+		F98DF36726B7439500F9C089 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F9A78F4925BA00DB006EDACD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F9AAC47A26C05BA900A2F3B0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		F9AAC47C26C06AAA00A2F3B0 /* notificationDialogView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = notificationDialogView.xib; sourceTree = "<group>"; };
+		F9AAC47E26C06AC600A2F3B0 /* notificationDialogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = notificationDialogViewController.swift; sourceTree = "<group>"; };
 		F9B70616259A5F3F00D4DEBA /* stepsCounterBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stepsCounterBar.swift; sourceTree = "<group>"; };
 		F9D9714C259917F300A776BE /* Krokomierz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Krokomierz.entitlements; sourceTree = "<group>"; };
 		F9D9714E259917F300A776BE /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -86,7 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F97DFEC425AF75180093060F /* HealthKit.framework in Frameworks */,
-				9594786B6714FD4A27DD8F1A /* Pods_Krokomierz.framework in Frameworks */,
+				F95A2EFC26AB2FD1004D26C6 /* Pods_Krokomierz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,27 +143,42 @@
 				F9066995259914FA004F7E37 /* SceneDelegate.swift */,
 				F906699F25991503004F7E37 /* Assets.xcassets */,
 				F90669A125991503004F7E37 /* LaunchScreen.storyboard */,
-				F93D123925B21691007638AA /* CustomPopUp.xib */,
-				F93D123B25B216D9007638AA /* customPopUpViewController.swift */,
 				F90669A425991503004F7E37 /* Info.plist */,
 				F906699C259914FA004F7E37 /* Krokomierz.xcdatamodeld */,
-				F9438C6825AE38230056BDC2 /* SettingsViewController.swift */,
 				F9438C6B25AE3A930056BDC2 /* UserDefaults.swift */,
 				F9443C6A25B5F2A000C52409 /* dateValueFormatter.swift */,
-				F988390325CC62230004B8C7 /* customViewDetails.xib */,
-				F988390725CC62CC0004B8C7 /* customViewDetails.swift */,
 				F9A78F4925BA00DB006EDACD /* Extensions.swift */,
 				F9431BF326A86506009EDF79 /* HealthKit.swift */,
+				F9AAC47A26C05BA900A2F3B0 /* NotificationManager.swift */,
 			);
 			path = Krokomierz;
+			sourceTree = "<group>";
+		};
+		F93CE82426BB29DE00AA570D /* Dialogs  */ = {
+			isa = PBXGroup;
+			children = (
+				F93550B126C4344A005D0437 /* summaryView.xib */,
+				F93550B326C435EA005D0437 /* summaryViewController.swift */,
+				F9AAC47C26C06AAA00A2F3B0 /* notificationDialogView.xib */,
+				F9AAC47E26C06AC600A2F3B0 /* notificationDialogViewController.swift */,
+				F93D123925B21691007638AA /* stepsAmountDialogView.xib */,
+				F93D123B25B216D9007638AA /* stepsAmountDialogViewController.swift */,
+				F93CE82526BB32FA00AA570D /* weightDialogView.xib */,
+				F93CE82726BB336D00AA570D /* weightDialogViewController.swift */,
+				F988390325CC62230004B8C7 /* customViewDetails.xib */,
+				F988390725CC62CC0004B8C7 /* customViewDetails.swift */,
+			);
+			path = "Dialogs ";
 			sourceTree = "<group>";
 		};
 		F9431BEC26A85A14009EDF79 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				F93CE82426BB29DE00AA570D /* Dialogs  */,
 				F95A2EF726AA0620004D26C6 /* Models */,
 				F9431BED26A85A20009EDF79 /* Home */,
 				F9431BF226A85AF6009EDF79 /* History */,
+				F98DF36626B7434C00F9C089 /* Settings */,
 				F9B70616259A5F3F00D4DEBA /* stepsCounterBar.swift */,
 				F9066999259914FA004F7E37 /* Main.storyboard */,
 			);
@@ -170,7 +199,6 @@
 			children = (
 				F915D8C625B4C32D00DF14AF /* HistoryViewController.swift */,
 				F95A2EF826AA1923004D26C6 /* HistoryViewModel.swift */,
-				F95A2EFA26AA1A17004D26C6 /* Model.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -181,6 +209,15 @@
 				F9431BEE26A85A91009EDF79 /* healthActivityDataModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F98DF36626B7434C00F9C089 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F9438C6825AE38230056BDC2 /* SettingsViewController.swift */,
+				F98DF36726B7439500F9C089 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		F9D9714D259917F300A776BE /* Frameworks */ = {
@@ -253,9 +290,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F90669A325991503004F7E37 /* LaunchScreen.storyboard in Resources */,
-				F93D123A25B21691007638AA /* CustomPopUp.xib in Resources */,
+				F93550B226C4344A005D0437 /* summaryView.xib in Resources */,
+				F93D123A25B21691007638AA /* stepsAmountDialogView.xib in Resources */,
+				F9AAC47D26C06AAA00A2F3B0 /* notificationDialogView.xib in Resources */,
 				F988390425CC62230004B8C7 /* customViewDetails.xib in Resources */,
 				F90669A025991503004F7E37 /* Assets.xcassets in Resources */,
+				F93CE82626BB32FA00AA570D /* weightDialogView.xib in Resources */,
 				F906699B259914FA004F7E37 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,23 +349,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F93D123C25B216D9007638AA /* customPopUpViewController.swift in Sources */,
+				F93D123C25B216D9007638AA /* stepsAmountDialogViewController.swift in Sources */,
 				F906699E259914FA004F7E37 /* Krokomierz.xcdatamodeld in Sources */,
+				F9AAC47B26C05BA900A2F3B0 /* NotificationManager.swift in Sources */,
 				F988390825CC62CC0004B8C7 /* customViewDetails.swift in Sources */,
 				F9066998259914FA004F7E37 /* HomeViewController.swift in Sources */,
 				F9B70617259A5F4000D4DEBA /* stepsCounterBar.swift in Sources */,
+				F9AAC47F26C06AC600A2F3B0 /* notificationDialogViewController.swift in Sources */,
 				F9443C6B25B5F2A000C52409 /* dateValueFormatter.swift in Sources */,
 				F9431BEF26A85A91009EDF79 /* healthActivityDataModel.swift in Sources */,
+				F93550B426C435EA005D0437 /* summaryViewController.swift in Sources */,
 				F9431BF426A86506009EDF79 /* HealthKit.swift in Sources */,
+				F93CE82826BB336D00AA570D /* weightDialogViewController.swift in Sources */,
 				F9066994259914FA004F7E37 /* AppDelegate.swift in Sources */,
 				F9066996259914FA004F7E37 /* SceneDelegate.swift in Sources */,
-				F95A2EFB26AA1A17004D26C6 /* Model.swift in Sources */,
 				F9431BF126A85A9F009EDF79 /* HomeViewModel.swift in Sources */,
 				F915D8C725B4C32D00DF14AF /* HistoryViewController.swift in Sources */,
 				F9438C6C25AE3A930056BDC2 /* UserDefaults.swift in Sources */,
 				F9A78F4A25BA00DB006EDACD /* Extensions.swift in Sources */,
 				F9438C6925AE38230056BDC2 /* SettingsViewController.swift in Sources */,
 				F95A2EF926AA1923004D26C6 /* HistoryViewModel.swift in Sources */,
+				F98DF36826B7439500F9C089 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

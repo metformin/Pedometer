@@ -13,7 +13,7 @@
         <!--Dzisiaj-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Krokomierz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Krokomierz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,7 +164,7 @@
                             <constraint firstItem="m5d-dg-o7n" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="s1m-VW-Ptj"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dzisiaj" image="diamond" catalog="system" id="2tu-6W-CKl">
+                    <tabBarItem key="tabBarItem" title="Dzisiaj" image="home" id="2tu-6W-CKl">
                         <color key="badgeColor" systemColor="systemRedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
@@ -194,34 +194,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aWT-9E-ayX">
-                                <rect key="frame" x="0.0" y="94" width="414" height="719"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aWT-9E-ayX">
+                                <rect key="frame" x="0.0" y="74" width="414" height="739"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingCell" id="twu-lq-E5A" customClass="settingsCell" customModule="Krokomierz" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="80"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="settingCell" id="twu-lq-E5A" customClass="settingsCell" customModule="Krokomierz" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="80.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="twu-lq-E5A" id="gdf-Wr-dlE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdV-nb-5YV">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="80.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8K-Zc-nun">
-                                                            <rect key="frame" x="30" y="0.0" width="51.5" height="80"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
-                                                            <nil key="textColor"/>
+                                                            <rect key="frame" x="30" y="0.0" width="44.5" height="80.5"/>
+                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4C-eS-SH0">
-                                                            <rect key="frame" x="362" y="0.0" width="42" height="80"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <rect key="frame" x="362" y="0.0" width="42" height="80.5"/>
+                                                            <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstItem="W8K-Zc-nun" firstAttribute="top" secondItem="TdV-nb-5YV" secondAttribute="top" id="4st-pY-2Sx"/>
                                                         <constraint firstAttribute="trailing" secondItem="f4C-eS-SH0" secondAttribute="trailing" constant="10" id="URr-Mx-HAi"/>
@@ -233,6 +235,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="TdV-nb-5YV" secondAttribute="bottom" id="7KG-Pw-c3e"/>
                                                 <constraint firstAttribute="trailing" secondItem="TdV-nb-5YV" secondAttribute="trailing" id="9iJ-TA-p2f"/>
@@ -240,6 +243,7 @@
                                                 <constraint firstItem="TdV-nb-5YV" firstAttribute="top" secondItem="gdf-Wr-dlE" secondAttribute="top" id="wvg-xE-lDJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="settingCellDescLabel" destination="f4C-eS-SH0" id="WRm-tr-f2w"/>
                                             <outlet property="settingCellMainLabel" destination="W8K-Zc-nun" id="8iA-tq-y2U"/>
@@ -248,31 +252,33 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USTAWIENIA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nH-sP-BGf">
-                                <rect key="frame" x="20" y="54" width="374" height="30"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="20" y="45" width="374" height="25.5"/>
+                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="2" height="-1"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tpz-qk-WBu"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="Tpz-qk-WBu" firstAttribute="bottom" secondItem="aWT-9E-ayX" secondAttribute="bottom" id="CPr-uG-F1Q"/>
                             <constraint firstItem="Tpz-qk-WBu" firstAttribute="trailing" secondItem="aWT-9E-ayX" secondAttribute="trailing" id="FAD-ne-hlS"/>
-                            <constraint firstItem="4nH-sP-BGf" firstAttribute="top" secondItem="Tpz-qk-WBu" secondAttribute="top" constant="10" id="MRs-Zj-ZVJ"/>
-                            <constraint firstItem="aWT-9E-ayX" firstAttribute="top" secondItem="Tpz-qk-WBu" secondAttribute="top" constant="50" id="TXG-vh-V5N"/>
+                            <constraint firstItem="4nH-sP-BGf" firstAttribute="top" secondItem="Tpz-qk-WBu" secondAttribute="top" constant="1" id="MRs-Zj-ZVJ"/>
+                            <constraint firstItem="aWT-9E-ayX" firstAttribute="top" secondItem="Tpz-qk-WBu" secondAttribute="top" constant="30" id="TXG-vh-V5N"/>
                             <constraint firstItem="aWT-9E-ayX" firstAttribute="leading" secondItem="Tpz-qk-WBu" secondAttribute="leading" id="pl6-pb-O29"/>
                             <constraint firstItem="4nH-sP-BGf" firstAttribute="leading" secondItem="Tpz-qk-WBu" secondAttribute="leading" constant="20" id="pwV-ut-DeZ"/>
                             <constraint firstItem="Tpz-qk-WBu" firstAttribute="trailing" secondItem="4nH-sP-BGf" secondAttribute="trailing" constant="20" id="tpg-9Q-mZl"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ustawienia" id="IzW-yw-aqi">
+                    <tabBarItem key="tabBarItem" title="Ustawienia" image="settings" id="IzW-yw-aqi">
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="Icon" value="oc:gear"/>
                         </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <connections>
+                        <outlet property="mainView" destination="jfr-Eh-oTP" id="d7q-kb-4oR"/>
                         <outlet property="tableView" destination="aWT-9E-ayX" id="6Gk-KX-Pzy"/>
                     </connections>
                 </viewController>
@@ -283,7 +289,7 @@
         <!--Custom Tab Bar View Controller-->
         <scene sceneID="CKX-49-uhG">
             <objects>
-                <tabBarController id="bVk-Ep-IwV" customClass="SSCustomTabBarViewController" customModule="SSCustomTabbar" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bVk-Ep-IwV" customClass="SSCustomTabBarViewController" customModule="SSCustomTabbar" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="1GP-qN-s8o" customClass="SSCustomTabBar" customModule="SSCustomTabbar">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -323,7 +329,7 @@
         <!--Historia-->
         <scene sceneID="HBP-5C-HKb">
             <objects>
-                <viewController id="Vrh-RB-eEk" customClass="historyViewController" customModule="Krokomierz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="historyViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vrh-RB-eEk" customClass="historyViewController" customModule="Krokomierz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iIF-Di-3DA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -559,7 +565,7 @@
                                                             <constraint firstAttribute="width" constant="15" id="m6c-Zj-wkQ"/>
                                                             <constraint firstAttribute="height" constant="15" id="nsX-U9-CgN"/>
                                                         </constraints>
-                                                        <state key="normal" title="&lt;" image="right_arrow_white"/>
+                                                        <state key="normal" image="right_arrow_white"/>
                                                         <connections>
                                                             <action selector="backYearButton:" destination="Vrh-RB-eEk" eventType="touchUpInside" id="Ut5-g0-EDA"/>
                                                         </connections>
@@ -652,12 +658,12 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="kXM-ge-veV"/>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PODSUMOWANIE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jv7-Dq-Qhw">
-                                <rect key="frame" x="123.5" y="45" width="167.5" height="25.5"/>
+                                <rect key="frame" x="122.5" y="45" width="169.5" height="25.5"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <size key="shadowOffset" width="0.0" height="1"/>
+                                <size key="shadowOffset" width="2" height="-1"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BvJ-2V-dL2"/>
@@ -672,7 +678,7 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="Historia" id="hl7-Y5-DIY">
+                    <tabBarItem key="tabBarItem" title="Historia" image="details" id="hl7-Y5-DIY">
                         <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="Icon" value="oc:history"/>
@@ -699,9 +705,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="diamond" catalog="system" width="128" height="122"/>
+        <image name="details" width="25" height="23.5"/>
+        <image name="home" width="25" height="25"/>
         <image name="left_arrow_white" width="133" height="241"/>
         <image name="right_arrow_white" width="133" height="241"/>
+        <image name="settings" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -716,9 +724,6 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

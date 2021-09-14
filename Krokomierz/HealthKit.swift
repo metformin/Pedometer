@@ -47,7 +47,6 @@ class HealthKitSetup{
         Future { promise in
             let stepQuantityType = HKObjectType.quantityType(forIdentifier: .stepCount)!
             let components = DateComponents().forPeriod(period: pir)
-            //Dopasować date do kalendarza:
             let startDate = selectedDay
 
             let endDate = Calendar.current.date(byAdding: components, to: startDate)!
@@ -66,5 +65,26 @@ class HealthKitSetup{
         }
     }
 
+    func getDistance(selectedDay:Date, pir: DateComponents.Periods) -> Future<Double,Never>{
+        Future { promise in
+            let distanceQuantityType = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!
+            let components = DateComponents().forPeriod(period: pir)
+            let startDate = selectedDay
+
+            let endDate = Calendar.current.date(byAdding: components, to: startDate)!
+            let predictate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
+            
+            let query = HKStatisticsQuery(quantityType: distanceQuantityType,
+                                          quantitySamplePredicate: predictate,
+                                          options: .cumulativeSum) { _, result,_ in
+                guard let result = result, let sum = result.sumQuantity() else {
+                    promise(.success(0.0))
+                    return
+                }
+                promise(.success(sum.doubleValue(for: HKUnit.meter())))
+            }
+            self.healthStore.execute(query)
+        }
+    }
     
 }
