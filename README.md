@@ -1,10 +1,15 @@
+
 # Pedometer
 An application project that will allow you to track your steps, burned calories, traveled distance and more!<br>
 Fully coded in Swift using the Combine framework and MVVM design pattern.
 <br>
 <br>
 1. The app on the home screen shows live data such as steps taken, calories burned, floors climbed, tempo, and distance traveled.
-<br><br>
+<br>
+
+![Pedometer Home Screen](https://user-images.githubusercontent.com/45921300/133324527-ed58d2f9-f679-4d0f-a1bb-4b3ace9dccbf.PNG)
+
+<br>
 
 2. The history tab generates graphs for the selected category (steps, distance or calories). User can change the date range for the charts. Total and average values for the selected period are also shown.
 <br><br>
