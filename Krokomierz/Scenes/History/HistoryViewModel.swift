@@ -19,16 +19,19 @@ class HistoryViewModel {
             startDate = Date()
         }
     }
-    let healthKit = HealthKitSetup()
+    lazy var healthKit = HealthKitSetup()
     var subscriptions = Set<AnyCancellable>()
     var selectedAcvitityType: activityType = .steps
     var components = DateComponents()
 
-
     var dataForOneDay = PassthroughSubject<[Date:Double],Never>()
     var dataForOneWeek = PassthroughSubject<[Date:Double],Never>()
     var dataForOneYear = PassthroughSubject<[Date:Double],Never>()
-
+    
+    init(){
+        healthKit.enableHealthStore()
+    }
+    
     var day = DateRange() {
         didSet{
             getDataForSpecificPeriodTime(selectedDate: day.startDate, activity: selectedAcvitityType, period: .oneHour)
@@ -106,6 +109,13 @@ class HistoryViewModel {
         let startMonth = forSelectedDate.startOfYear
         year.startDate = startMonth
     }
+    
+    func fetchData(){
+        getDayRange(forSelectedDate: Date())
+        getWeekRange(forSelectedDate: Date())
+        getYearRange(forSelectedDate: Date())
+    }
+
 
     //MARK: - Get Data For Specific Period Time
     func getDataForSpecificPeriodTime(selectedDate: Date, activity: activityType, period: DateComponents.Periods) -> Future<[Date:Double],Never>{
@@ -137,6 +147,7 @@ class HistoryViewModel {
                     }
                     
                     let checkDay = Calendar.current.date(byAdding: components, to: selectedDate)!
+                    
                     switch activity {
                     case .steps:
                         self.healthKit.getSteps(selectedDay: checkDay, pir: period)

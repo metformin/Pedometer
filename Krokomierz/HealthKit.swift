@@ -9,38 +9,38 @@ import Foundation
 import HealthKit
 import Combine
 
+enum authError: Error {
+    case failedAuth
+}
 
 class HealthKitSetup{
 
-    let healthStore = HKHealthStore()
+    lazy var healthStore = HKHealthStore()
 
 
-    func enableHealthStore() -> Future<Bool,Never>{
-        Future { promise in
-            if HKHealthStore.isHealthDataAvailable(){
-                let stepQuantityType = HKObjectType.quantityType(forIdentifier: .stepCount)!
-                let distanceWalkingRunningQuantityType = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!
-                let activeEnergyBurned = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!
-                let exerciseTime = HKObjectType.quantityType(forIdentifier: .appleExerciseTime)!
+    func enableHealthStore(){
+        if HKHealthStore.isHealthDataAvailable(){
+            let stepQuantityType = HKObjectType.quantityType(forIdentifier: .stepCount)!
+            let distanceWalkingRunningQuantityType = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!
+            let activeEnergyBurned = HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!
+            let exerciseTime = HKObjectType.quantityType(forIdentifier: .appleExerciseTime)!
 
-                let allTypes = Set([HKObjectType.workoutType(),
-                                    stepQuantityType,
-                                    distanceWalkingRunningQuantityType,
-                                    activeEnergyBurned,
-                                    exerciseTime
-                                    ])
+            let allTypes = Set([HKObjectType.workoutType(),
+                                stepQuantityType,
+                                distanceWalkingRunningQuantityType,
+                                activeEnergyBurned,
+                                exerciseTime
+                                ])
 
-                self.healthStore.requestAuthorization(toShare: nil, read: allTypes) { (success, error) in
-                    if !success{
-                        print("DEBUG: HealthStore auth failed(read)")
-                        promise(.success(false))
-                    } else {
-                        print("DEBUG: HealthStore auth successed(read)")
-                        promise(.success(true))
-                    }
+            self.healthStore.requestAuthorization(toShare: nil, read: allTypes) { (success, error) in
+                if !success{
+                    print("DEBUG: HealthStore auth failed")
+                } else {
+                    print("DEBUG: HealthStore auth successed")
                 }
-           }
-        }
+            }
+       }
+        
     }
     
     func getSteps(selectedDay:Date, pir: DateComponents.Periods) -> Future<Double,Never>{

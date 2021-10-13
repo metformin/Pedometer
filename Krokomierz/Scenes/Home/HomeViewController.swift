@@ -20,8 +20,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var stepperBar: CircularProgressView!
     
     //MARK: - References
-    let viewModel = HomeViewModel()
-    let historyViewModel = HistoryViewModel()
+    lazy var viewModel = HomeViewModel()
+//    lazy var historyViewModel = HistoryViewModel()
     
     var subscriptions = Set<AnyCancellable>()
     
@@ -38,7 +38,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         mainView.setGradientBackground(view: mainView)
         viewModel.setupStartUpdateStepsLive()
 
-        historyViewModel.getDayRange(forSelectedDate: Date())
+//        historyViewModel.getDayRange(forSelectedDate: Date())
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

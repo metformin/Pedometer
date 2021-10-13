@@ -33,13 +33,12 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var yearsBottomSection: customViewDetails!
 
     //MARK: - References
-    let viewModel = HistoryViewModel()
+    lazy var viewModel = HistoryViewModel()
     
     var subscriptions = Set<AnyCancellable>()
-    func fetchData(){
-        viewModel.getDayRange(forSelectedDate: Date())
-        viewModel.getWeekRange(forSelectedDate: Date())
-        viewModel.getYearRange(forSelectedDate: Date())
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.fetchData()
     }
 
     override func viewDidLoad() {
@@ -50,7 +49,6 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
         weekHistoryLineChart.noDataText = "Brak danych"
         dayHistoryLineChart.noDataText = "Brak danych"
 
-        fetchData()
 
         mainView.setGradientBackground(view: mainView)
         
@@ -123,7 +121,7 @@ class historyViewController: UIViewController, UICollectionViewDataSource, UICol
         default:
             break
         }
-        fetchData()
+        viewModel.fetchData()
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = categoryCollectionView.cellForItem(at: indexPath) as! categoryCell
